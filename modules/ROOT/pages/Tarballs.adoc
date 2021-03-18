@@ -1,0 +1,162 @@
+= General
+
+
+The general contract is that a plugin is made up of five kinds of files:
+
+* The metadata.xml file [mandatory].
+* The dynamic library(.so/.dll/.dylib) [mandatory].
+* Optional helper binaries.
+* Data files
+* Translations
+
+The tarball is the output from *make install* where these files are
+located in the [System Install Dir](Terminology#system-install-path). In
+other words, the plugin should work as expected if the tarball is
+extracted on the system.
+
+The plugin installer works by translating these typically read-only
+paths to the rw [User Install path](Terminology#user-install-path). For
+example, on linux:
+
+....
+  /usr/share/opencpn   =>  ~/.local/share/opencpn
+  /usr/bin             =>  ~/.local/bin
+  /usr/lib/opencpn     =>  ~/.local/lib/opencpn
+....
+
+The corresponding substitutions are made on other platforms. For this to
+work the tarball needs to have a specific layout like in examples below.
+The example plugins contains:
+
+. A mandatory dynamic library oesenc (with platform dependent
+mutations.)
+. A helper binary oeserverd
+. Data files: SymbolPatch5.xml and license.txt
+. Translations
+
+Here is just a few file(s) of each kind mentioned; there are more of
+them in the actual plugin.
+
+Example macos layout
+
+
+....
+  oesenc_pi-1.2.0-2
+      ├── metadata.xml
+      └──  OpenCPN.app
+            └── Contents
+                 ├── PlugIns
+                 │   ├── liboesenc_pi.dylib
+                 │   └── oeserverd
+                 ├── Resources
+                 │   ├── ar_SA.lproj
+                 │   │    └── opencpn-oesenc_pi.mo
+                 │   └── bg_BG.lproj
+                 │        └── opencpn-oesenc_pi.mo
+                 │ 
+                 └── SharedSupport
+                     └── plugins
+                         └── oesenc_pi
+                             └── data
+                                 ├── license.txt
+                                 └── SymbolPatch5.xml
+      
+....
+
+Example flatpak layout
+
+
+....
+  oesenc_pi-flatpak-1.2.0/
+      ├── metadata.xml
+      ├── bin
+      │   ├── oeserver
+      │   └── oeserverd.prog
+      ├── lib
+      │   └── opencpn
+      │       └── liboesenc_pi.so
+      ├── manifest.json
+      └── share
+          ├── locale
+          │   ├── ar_SA
+          │   │   └── LC_MESSAGES
+          │   │       └── opencpn-oesenc_pi.mo
+          │   └── ca_ES
+          │       └── LC_MESSAGES
+          │           └── opencpn-oesenc_pi.mo
+          └── opencpn
+              └── plugins
+                  └── oesenc_pi
+                      └── data
+                           ├── license.txt
+                           └── SymbolPatch5.xml
+....
+
+Example Ubuntu layout
+
+
+....
+  oesenc_pi-1.2.0-2_ubuntu-16.04
+      │
+      ├── metadata.xml 
+      ├── bin
+      │   └── oeserverd
+      ├── lib
+      │   └── opencpn
+      │       ├── liboesenc_pi.so
+      │       └── libsgllnx64-2.29.02.so
+      └── share
+          ├── locale
+          │   ├── ar_SA
+          │   │   └── LC_MESSAGES
+          │   │       └── opencpn-oesenc_pi.mo
+          │   └── bg_BG
+          │       └── LC_MESSAGES
+          │           └── opencpn-oesenc_pi.mo
+          └── opencpn
+              └── plugins
+                  └── oesenc_pi
+                      └── data
+                          ├── license.txt
+                          └── SymbolPatch5.xml
+....
+
+The example shows the directories bin, lib and share in the top
+directory. Having them as `/usr/\{bin, lib, share}` or
+`/usr/local/\{bin, lib, share}` is also ok.
+
+Example windows layout
+
+....
+  oesenc_pi-1.2.0-2_msvc-10.0.14393
+   ├── metadata.xml
+   ├── plugins
+   │   ├── oesenc_pi
+   │   │   ├── data
+   │   │   │   ├── license.txt
+   │   │   │   └── SymbolPatch5.xml
+   │   │   ├── msvcp140.dll
+   │   │   ├── oeserverd.exe
+   │   │   └── vcruntime140.dll
+   │   └── oesenc_pi.dll
+   └── share
+         └── locale
+               ├── ar_SA
+               │   └── LC_MESSAGES
+               │        └── opencpn-oesenc_pi.mo
+               └── bg_BG
+                   └── LC_MESSAGES
+                        └── opencpn-oesenc_pi.mo
+....
+
+Tarball names
+
+
+The filename need to be unique and are formed like
+
+....
+  <plugin name>-<version>[-release]_<target os>-<target os version>[-arch].tar.gz
+....
+
+for example `oesenc_pi-1.2.0-3_ubuntu-18.04-armhf.tar.gz`. The release
+and arch parts are optional and can be omitted.

@@ -1,0 +1,24 @@
+The plugin developer interacts with opencpn via
+. The plugins project at https://github.com/opencpn/plugins
+. Tarballs which can be used by the installer
+. XML metadata which provides means for opencpn to locate and download
+the tarball.
+
+The basic workflow for a new plugin is
+
+. Clean-up and update the sources. See [Plugin
+Adaptation](Plugin-adaptation)
+. Modify the plugin sources so it produces a usable tarball
+. Upload the tarball so it's available on an url.
+. Create a new plugin catalog which contains metadata for the new
+plugin.
+. Make the new catalog the one used in opencpn.
+. Test installing the new plugin using opencpn.
+. Issue a pull request to https://github.com/opencpn/plugins with the
+new catalog data
+. The new catalog data becomes available to end users when the pull
+request is merged.
+
+After making these steps the new plugin is a available for end users.
+For practical reasons, the best is to modify the plugin CI setup so it
+produces uploaded tarballs and XML metadata as part of regular building.

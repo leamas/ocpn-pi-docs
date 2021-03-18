@@ -1,0 +1,91 @@
+Since 8e77124 (March, 11 2020) the logging system has been revised. Here
+are three types of changes: new log file layout, new logging API and new
+logging runtime options.
+
+New log layout
+
+
+The logfile now contains lines like
+
+....
+  21:18:21.858 MESSAGE chartdb.cpp:319 Chart cache PlugIn purge
+....
+
+Compared to the older format, the new format has
+
+. Millisecond timestamps
+. A type indicator which is either FATALERR, ERROR, WARNING,
+
+....
+  MESSAGE, STATUS, INFO, DEBUG, TRACE or PROGRESS
+- The location where the message was created (file:linenumber)
+....
+
+New logging API
+
+'''''
+
+The existing API defined continues to work as before. In particular,
+`wxLogMessage()` works as it always have, besides that the logged
+messages look different (see above).
+
+The new logging API is defined in the header `logger.h`. The basic
+routines here is C-fashioned functions like `LOG_INFO("Things broke:
+%s", why)` and C++ log sinks used like `INFO_LOG << "Things broke: " <<
+why;` These exists:
+
+....
+  TRACE_LOG          LOG_TRACE()
+  DEBUG_LOG          LOG_DEBUG()
+  INFO_LOG           LOG_INFO()
+  MESSAGE_LOG        LOG_MESSAGE()
+  WARNING_LOG        LOG_WARNING()
+  ERROR_LOG          LOG_ERROR()
+....
+
+These macros are extremely fast when not enabled (see below). There is
+no need to guard for example LOG_DEBUG() with NDEBUG ifdefs. Leaving
+them in the runtime makes it possible to enable them without
+recompilation if required.
+
+Runtime logging options
+
+'''''
+
+The new logging accepts a command line parameter `--loglevel <level>`
+where _level_ is one of TRACE, DEBUG, INFO, WARNING or ERROR. The
+parameter describes the lowest priority a message must have to be
+logged. `--loglevel ERROR` only logs error messages, `--loglevel DEBUG`
+logs all messages besides LOG_TRACE().
+
+There is also an environment variable OPENCPN_LOGLEVEL which could be
+set the same values as used by --loglevel
+
+The default value is INFO i. e., everything besides debug() and trace()
+messages is logged.
+
+Usage and discussion
+
+'''''
+
+The lack of runtime configuration has forced us to have some discipline
+when adding logging statements so the log doesn't become too big for
+casual users. The new logging system makes it possible to
+
+. Have a large number of LOG_DEBUG statements in the code, normally
+disabled but
+
+....
+  possible to enable in runtime.
+....
+
+. Use under-used logging statements like LOG_WARNING to make serious
+things to
+
+....
+  stand out.
+....
+
+. Replace ad-hoc logging like qDebug and plain printf() statements.
+
+. Remove evil ifdefs guarding debug logging.

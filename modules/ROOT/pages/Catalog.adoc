@@ -1,0 +1,74 @@
+= General
+
+The catalog is an XML file describing all plugins available to be
+downloaded. A formal xsl definition is available at the plugins project
+(see below).
+
+The basic structure is
+
+....
+  <plugins>
+    <version>0.0.2</version>
+    <date>2019-11-15 14:21:46</date>
+    <plugin version="1">
+    ...
+    </plugin>
+    <plugin version="1">
+    ...
+    </plugin>
+  </plugins>
+....
+
+Here we have:
+
+* The version, a semantic version as of http://semver.org. The
+  version level is independent of opencpn's.
+* Date is a free-format string.
+* Each `<plugin>` represents a tarball to download; that is, a plugin
+  build for a specific platform.
+
+
+The file is typically large, several thousand lines, and requires
+tooling to be maintained. To provide these tools is one of the purposes
+of the https://github.com/opencpn/plugins[plugins project].
+
+== Plugin
+
+
+Each `<plugin>` section defines some tags for the actual tarball:
+
+*name* must match (case sensitive) the name as returned by the plugin's
+`GetCommonName()` function, typically without any _pi suffix and often
+mixed case.
+
+*version* is what defines the download as an update or downgrade when
+compared to an already installed version. The preferred version format
+is semantic versioning as of https://semver.org/. Even if semantic
+versioning isn't used the versions must be sortable in a sane way.
+
+*release* is intended for downstream packaging, an extra digit in the
+version (normally "1").
+
+*target* can be either *darwin* (for MacOS) or *msvc* (visual studio
+windows build). For other platforms it's an _operating system-arch_
+tuple like *flatpak-x86_64* or *ubuntu-armhf*.
+
+*target-version* is the operating system version, preferably in
+numerical form like 18.04.
+
+*target-arch* is the hardware platform, for example "x86_64" or "armhf".
+On windows, flatpak and darwin/macos it should always be *x86_64*. On
+linux, the same as the -arch suffix in target (see above).
+
+*api-version* defines the lowest OpenCPN plugin API version required by
+this plugin.
+
+*source* and *author* are reserved for future use.
+
+*tarball-url* is the url from which the plugin tarball could be
+downloaded.
+
+*summary*, *info-url*, *description* are presented in the GUI when
+listing plugins. Summary is a short (< 72 chars) line describing the
+plugin. info-url is an url to plugin's website. Description is a larger,
+multi-line information presented in the UI on user request.

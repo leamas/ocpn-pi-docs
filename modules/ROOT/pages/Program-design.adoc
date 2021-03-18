@@ -1,0 +1,69 @@
+= Design overview
+
+== Supported platforms
+
+
+The installer supports four platforms:
+
+- Windows 
+- Macos
+- Debian
+- Flatpak
+
+The PR contains patches to make the mingw builds usable. However, the
+core installer makes no difference between mingw or msvc builds.
+
+The combination of Debian and Flatpak is aimed to cover the fragmented
+Linux ecosystem. While Flatpak can be used on all Linux distros, having
+Debian packages available makes sense for space-constrained embedded
+systems like the Raspberry.
+
+== Catalog and tarballs
+
+
+These are the groundwork for the installer code. The catalog is the
+complete list of available plugins presented to user. When user selects
+a plugin, the catalog provides info so the plugin can be downloaded. See
+[Catalog](Catalog) and [Tarballs](Tarballs)
+
+== Installations
+
+
+Plugins are installed in the user writable [installation
+paths](Installation-paths).
+
+After installation, a list of installed files is left in the [user
+configuration directory](Terminology#user-config-path), in the sub
+directory `plugins/install_data`. This list is used when uninstalling.
+If the list does not exist the installer assumes the plugin has been
+installed using other means and will not change it in any way.
+
+== Main modules affected
+
+* pluginmanager.cpp has been patched to:
+
+** Load plugins from the
+   [User install dir](terminology#user-install-path) on all platforms. 
+   This makeś Macos and Windows work in a similar way as Linux.
+** Support uninstallation of plugins in user install directories.
+** Support a dynamic set of plugins. Prior to this PR, the set of
+   plugins loaded at startup never changed.
+* The two new modules download\_mgr and catalog\_mgr handles the download
+  and catalog manager UI dialogs.
+* The PluginHandler module is the backend side of plugins, mostly
+  downloading and installing. Here is also code to handle the plugin 
+  metadata.
+* The PluginPaths module handles mapping of various paths to platform-
+  specific values.
+* OCPNPlatform has been patched to provide an extended set of platform
+  paths, mostly to support loading plugins from user directories.
+
+== Build chain
+
+The `flatpak/` directory contains all necessary pieces to build a
+flatpak version of opencpn. This has been incorporated to be able to
+test flatpaked plugins.
+
+The `ci/` directory contains changes to build mingw and also support for
+deploying packages to cloudsmith.io. Build scripts has been refactored
+to be usable also in other builders like circleci.com

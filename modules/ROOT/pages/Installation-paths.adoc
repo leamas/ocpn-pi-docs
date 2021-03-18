@@ -1,0 +1,90 @@
+= General
+
+
+Plugins are made up of four parts:
+
+* Dynamic libraries
+* Data files
+* Translations
+* Helper binaries.
+
+The only mandatory part is the plugin dynamic library, many plugins is
+basically just this file + some translations.
+
+MacOS
+
+....
+  ~/Library/Application Support/OpenCPN/
+        └── Contents
+               ├── PlugIns
+               │      └──  LIBRARIES, BINARY HELPERS
+               ├── Shared Support
+               │      └──plugins
+               |             └── <plugin>
+               |                    └── DATA
+               └─- Resources
+                      └─── *.lproj   (en_US, da_DK, sv_SE, etc.)
+                                └───────── opencpn-<plugin>.mo  
+....
+
+Windows
+
+'''''
+
+....
+  %LOCALAPPDATA%  (default: C:\Users\<user>\Appdata\Local)
+       └── opencpn 
+             ├── plugins
+             │    ├── LIBRARIES, BINARY HELPERS
+             │    └── <plugin> 
+             │            └── DATA FILES 
+             └── share
+                  └── locale
+                         └──  *   (en_US, sv_SE, etc.)
+                              └── LC_MESSAGES
+                                    └── opencpn-<plugin>.mo
+....
+
+Linux
+
+'''''
+
+....
+  ~/.local/
+       ├── lib
+       │    └── opencpn
+       │          └── LIBRARIES
+       ├── share
+       │    ├── opencpn
+       │    │     └── plugins
+       │    │            └── <plugin>
+       │    │                    └── DATA FILES
+       │    └── locale
+       |          └── *  (en_US, sv_SE, etc.)
+       |              └── LC_MESSAGES
+       |                   └── opencpn-<plugin>.mo
+       └── bin
+            └── BINARY HELPERS
+....
+
+flatpak
+
+
+....
+  ~/.var/app/org.opencpn.OpenCPN/
+       ├── lib
+       │    └── opencpn
+       │          └── LIBRARIES
+       ├── data
+       │    ├── opencpn
+       │    │     └── plugins
+       │    │             └── <plugin>
+       │    │                     └── DATA FILES
+       │    └── locale
+       |          └── *   (en_US, sv_SE, etc.)
+       |              |
+       |              └── LC_MESSAGES
+       |                    └── opencpn-<plugin>.mo
+       └── bin
+            └── BINARY HELPERS
+....

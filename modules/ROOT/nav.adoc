@@ -1,0 +1,12 @@
+.Plugin Installer Documents
+* xref:Catalog.adoc[Catalog]
+* xref:End-user-stories.adoc[End User Stories]
+* xref:Home.adoc[Home]
+* xref:Installation-paths.adoc[Installation Paths]
+* xref:Plugin-adaptation.adoc[Plugin Adaptation]
+* xref:Plugin-developer-use-case.adoc[Plugin Developer Use Case]
+* xref:Plugins.adoc[Plugins]
+* xref:Program-design.adoc[Program Design]
+* xref:Tarballs.adoc[Tarballs]
+* xref:Terminology.adoc[Terminology]
+

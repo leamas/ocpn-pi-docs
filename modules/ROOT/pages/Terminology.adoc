@@ -1,0 +1,55 @@
+= System install path
+
+The typically read-only path used when
+installing plugins using legacy packages. Examples includes `/usr` on
+linux, `C:\Program Files (x86)` on windows and `/Applications` on macos.
+
+== User install path 
+
+The r/w path used to install plugins. Examples
+includes `~/.local` on linux, `~/Library/Applications` on macos and
+`%LOCALAPPDATA%` or `%HOME%\Appdata\Local` on windows. See
+xref:Installation-paths.adoc[Installation paths]
+
+== User config path
+
+The user-writable directory for configuration files
+for example ocpn-plugins.xml:
+
+[cols="20h,~",stripes=odd,width=60%]
+|===
+
+| debian | ~/.opencpn 
+
+| flatpak 
+| ~/.var/app/org.opencpn.OpenCPN/config/opencpn
+
+| Windows 
+| C:\ProgramData\opencpn\
+
+| Macos   
+| ~/Library/Preferences/opencpn
+
+|===
+
+
+== System config path
+
+The readonly directory for configuration files
+for example ocpn-plugins.xml:
+
+
+[cols="20h,~",stripes=odd,width=60%]
+|===
+|debian
+|/usr/share/opencpn
+
+|flatpak
+|/app/share/opencpn
+
+|Windows
+|C:\Program Files (x86)\OpenCPN
+
+|Macos
+|~/Desktop/OpenCPN.app/Contents/SharedSupport
+|===

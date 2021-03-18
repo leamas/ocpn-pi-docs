@@ -1,0 +1,47 @@
+= End user stories
+
+
+### List available plugins to download
+
+User starts opencpn and invokes a command which displays all available
+plugin downloads. This makes user understand if those downloads
+represents a new (uninstalled) plugin or an upgrade/downgrade option of
+existing one.
+
+==  Uninstalling plugin
+
+User selects to uninstall plugin which is completely removed from the
+system.
+
+== Installing, upgrading or downgrading plugin
+
+User selects a plugin from list of available downloads. The plugin is
+then downloaded and installed, eventually being available to user.
+
+### Installing/uninstalling legacy, packaged plugins Attempts to change
+such plugins should be blocked so that user does not tries to change
+read-only data.
+
+== Simple catalog update.
+
+User selects to upgrade the catalog. The latest catalog is downloaded
+from the actual url and used to list available plugins.
+
+== Catalog Channel Update
+
+User selects the catalog channel to use from a list of available
+channels so that subsequent updates is done from this channel. Each
+channel represents a different stream of catalog updates.
+
+== Advanced Catalog Update
+
+User selects an advanced menu and selects among options to reset catalog
+to installation defaults, latest available or just stick with existing
+catalog so she can get a more fine-grained catalog control of the actual
+catalog to use.
+
+== Catalog custom URL
+
+User selects a dialog which presents options to use an url to download
+the catalog so she can use an arbitrary catalog provider such as a
+plugin developer.
