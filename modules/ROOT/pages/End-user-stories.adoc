@@ -1,7 +1,7 @@
 = End user stories
 
 
-### List available plugins to download
+== List available plugins to download
 
 User starts opencpn and invokes a command which displays all available
 plugin downloads. This makes user understand if those downloads
