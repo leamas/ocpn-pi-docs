@@ -13,7 +13,7 @@ Here we have:
 
 * Use Cases and Workflows
 ** xref:End-user-stories.adoc[End user stories]
-** xref:Plugin-developer-use-case[Plugin developer]
+** xref:Plugin-developer-use-case.adoc[Plugin developer]
 * xref:Program-design.adoc[Functional overview]
 * xref:Tarballs.adoc[Tarballs]
 * xref:Catalog.adoc[The catalog]

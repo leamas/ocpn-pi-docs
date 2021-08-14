@@ -7,12 +7,12 @@ changes includes some general updates & cleanup:
 
 * Updating to the latest plugin API v 1.16 (as of 5.0.0).
 * Using the new function GetPluginDataDir instead of previous
-  GetpSharedDataLocation(). This is so that the plugin can find it's 
+  GetpSharedDataLocation(). This is so that the plugin can find it's
   own data directory even if relocated to a new location.
 * Ensure that LD_LIBRARY_PATH is not overwritten by plugin if it's already
   set (for plugins which uses it, most don't)
-* Use the new find_in_path() function to locate binary helpers as a 
-  fallback if hardcoded paths does not work (for plugins which uses 
+* Use the new find_in_path() function to locate binary helpers as a
+  fallback if hardcoded paths does not work (for plugins which uses
   helpers, most don't).
 * Ensure that plugin does not link to libraries outside the git tree, in
   particular the msvc opencpn.lib import library.
@@ -33,8 +33,8 @@ enough.
 There are two examples on the this process
 
 * [oesenc_pi](https://github.com/bdbcat/oesenc_pi/). This is as
-  complicated as it gets with binary helpers, extra libs and data. 
-* [ShipDriver_pi](https://github.com/Rasbats/shipdriver_pi.git) is simpler 
+  complicated as it gets with binary helpers, extra libs and data.
+* [ShipDriver_pi](https://github.com/Rasbats/shipdriver_pi/) is simpler
   example, but still complex enough to cover most plugin cases. The repo
   contains a branch called *patches* which a clean , rewritten history how
   the adaptation is done.
@@ -64,7 +64,7 @@ commands, two spaces indentation and plain endif (), something like
 This is supported by the cmake-format utility,
 https://github.com/cheshirekow/cmake_format. A .cmake-format options
 file to use is part of the
-[ShipDriver_pi](https://github.com/Rasbats/shipdriver_pi.git) plugin.
+[ShipDriver_pi](https://github.com/Rasbats/shipdriver_pi/) plugin.
 cmake-format has also been used with the same settings in the main
 opencpn project where it has been used to format several thousand of
 lines with good results.

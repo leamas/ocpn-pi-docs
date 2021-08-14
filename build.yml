@@ -1,0 +1,19 @@
+site:
+  title: Plugin Installer Documentation
+  url: https://leamas.github.io/ocpn-pi-docs
+  start_page: plugin-installer::Home.adoc
+
+content:
+  sources:
+    - url: https://github.com/leamas/ocpn-pi-docs.git
+      branches: main   
+      edit_url: false
+
+ui:   
+  bundle:
+    url: ui-bundle.zip
+    snapshot: true
+
+output:
+  dir: docs
+  clean: true

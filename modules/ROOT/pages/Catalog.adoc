@@ -21,7 +21,7 @@ The basic structure is
 
 Here we have:
 
-* The version, a semantic version as of http://semver.org. The
+* The version, a semantic version as of https://semver.org. The
   version level is independent of opencpn's.
 * Date is a free-format string.
 * Each `<plugin>` represents a tarball to download; that is, a plugin
@@ -43,7 +43,7 @@ mixed case.
 
 *version* is what defines the download as an update or downgrade when
 compared to an already installed version. The preferred version format
-is semantic versioning as of https://semver.org/. Even if semantic
+is semantic versioning as of https://semvers.org/. Even if semantic
 versioning isn't used the versions must be sortable in a sane way.
 
 *release* is intended for downstream packaging, an extra digit in the
