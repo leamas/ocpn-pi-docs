@@ -68,7 +68,13 @@ this plugin.
 *tarball-url* is the url from which the plugin tarball could be
 downloaded.
 
-*summary*, *info-url*, *description* are presented in the GUI when
-listing plugins. Summary is a short (< 72 chars) line describing the
-plugin. info-url is an url to plugin's website. Description is a larger,
-multi-line information presented in the UI on user request.
+*info-url* is presented in the plugin GUI, a link for more information
+about his plugin.
+
+*summary* Is a real short description of the plugin. Avoid the words
+_plugin_ and _OpenCPN_ here, that this is an OpenCPN plugin is obvious
+given the context.
+
+*description* is a larger, multiline description presented in the UI
+on user request. It should be manually formattted into lines no longer
+than 40 characters to fit also on small screens.
