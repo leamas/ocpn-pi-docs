@@ -10,12 +10,12 @@ The general contract is that a plugin is made up of five kinds of files:
 * Translations
 
 The tarball is the output from *make install* where these files are
-located in the xref:Terminology.adoc#system-install-path[System Install Dir]. In
+located in the xref:Terminology.adoc[System Install Dir]. In
 other words, the plugin should work as expected if the tarball is
 extracted on the system.
 
 The plugin installer works by translating these typically read-only
-paths to the rw xref:Terminology.adoc#user-install-path[User Install path]. For
+paths to the rw xref:Terminology.adoc#_user_install_path[User Install path]. For
 example, on linux:
 
 ....

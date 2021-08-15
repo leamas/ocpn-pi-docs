@@ -33,7 +33,7 @@ Plugins are installed in the user writable [installation
 paths](Installation-paths).
 
 After installation, a list of installed files is left in the [user
-configuration directory](Terminology#user-config-path), in the sub
+configuration directory](Terminology#_user_config_path), in the sub
 directory `plugins/install_data`. This list is used when uninstalling.
 If the list does not exist the installer assumes the plugin has been
 installed using other means and will not change it in any way.
@@ -43,7 +43,7 @@ installed using other means and will not change it in any way.
 * pluginmanager.cpp has been patched to:
 
 ** Load plugins from the
-   [User install dir](terminology#user-install-path) on all platforms. 
+   [User install dir](terminology#_user_install_path) on all platforms. 
    This makeś Macos and Windows work in a similar way as Linux.
 ** Support uninstallation of plugins in user install directories.
 ** Support a dynamic set of plugins. Prior to this PR, the set of

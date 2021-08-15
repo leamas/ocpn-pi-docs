@@ -1,3 +1,4 @@
+[#system-install-path]
 = System install path
 
 The typically read-only path used when
