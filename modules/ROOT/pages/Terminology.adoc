@@ -33,6 +33,9 @@ for example ocpn-plugins.xml:
 
 |===
 
+This path is available in the API using the
+`getpPrivateApplicationDataLocation()` function.
+
 
 == System config path
 

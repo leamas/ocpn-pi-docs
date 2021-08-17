@@ -1,5 +1,6 @@
-= General
+= Installation paths
 
+== General 
 
 Plugins are made up of four parts:
 
@@ -11,7 +12,12 @@ Plugins are made up of four parts:
 The only mandatory part is the plugin dynamic library, many plugins is
 basically just this file + some translations.
 
-MacOS
+Many plugins includes a data directory. The path to this directory is
+available in the API using the  `GetPluginDataDir()` function. Note that
+this directory is read-only for the plugin, the files here are owned
+by the installer and must not be modified.
+
+== MacOS
 
 ....
   ~/Library/Application Support/OpenCPN/
@@ -20,14 +26,14 @@ MacOS
                │      └──  LIBRARIES, BINARY HELPERS
                ├── Shared Support
                │      └──plugins
-               |             └── <plugin>
-               |                    └── DATA
+               │             └── <plugin>
+               │                    └── DATA
                └─- Resources
                       └─── *.lproj   (en_US, da_DK, sv_SE, etc.)
                                 └───────── opencpn-<plugin>.mo  
 ....
 
-Windows
+== Windows
 
 '''''
 
@@ -45,7 +51,7 @@ Windows
                                     └── opencpn-<plugin>.mo
 ....
 
-Linux
+== Linux
 
 '''''
 
@@ -67,7 +73,7 @@ Linux
             └── BINARY HELPERS
 ....
 
-flatpak
+== Flatpak
 
 
 ....
