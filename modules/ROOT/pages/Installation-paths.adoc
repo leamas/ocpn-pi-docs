@@ -1,6 +1,6 @@
 = Installation paths
 
-== General 
+== General
 
 Plugins are made up of four parts:
 
@@ -30,7 +30,7 @@ by the installer and must not be modified.
                │                    └── DATA
                └─- Resources
                       └─── *.lproj   (en_US, da_DK, sv_SE, etc.)
-                                └───────── opencpn-<plugin>.mo  
+                                └───────── opencpn-<plugin>.mo
 ....
 
 == Windows
@@ -39,11 +39,11 @@ by the installer and must not be modified.
 
 ....
   %LOCALAPPDATA%  (default: C:\Users\<user>\Appdata\Local)
-       └── opencpn 
+       └── opencpn
              ├── plugins
              │    ├── LIBRARIES, BINARY HELPERS
-             │    └── <plugin> 
-             │            └── DATA FILES 
+             │    └── <plugin>
+             │            └── DATA FILES
              └── share
                   └── locale
                          └──  *   (en_US, sv_SE, etc.)
