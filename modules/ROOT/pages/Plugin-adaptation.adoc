@@ -35,9 +35,7 @@ There are two examples on the this process
 * [oesenc_pi](https://github.com/bdbcat/oesenc_pi/). This is as
   complicated as it gets with binary helpers, extra libs and data.
 * [ShipDriver_pi](https://github.com/Rasbats/shipdriver_pi/) is simpler
-  example, but still complex enough to cover most plugin cases. The repo
-  contains a branch called *patches* which a clean , rewritten history how
-  the adaptation is done.
+  example, but still complex enough to cover most plugin cases.
 
 Testing a new or modified plugin
 
