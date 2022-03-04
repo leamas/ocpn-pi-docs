@@ -1,6 +1,6 @@
 name: plugin-installer
 title: Plugin Installer Documentation
-version: '0.0.1'
+version: ~
 start_page: ROOT:Home.adoc 
 nav: 
 - modules/ROOT/nav.adoc
